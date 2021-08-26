@@ -3266,13 +3266,13 @@ const search = instantsearch({
 */
 var search = instantsearch({
   indexName: 'datasets',
-  searchClient: (0, _instantMeilisearch.instantMeiliSearch)('http://35.232.184.215', '0c03cdf5572a83db2a9d90bb9003ca6fcc47d9ab06c3330b41709bb4138a981b', {
+  searchClient: (0, _instantMeilisearch.instantMeiliSearch)('https://apid.data4me.org/', '0c03cdf5572a83db2a9d90bb9003ca6fcc47d9ab06c3330b41709bb4138a981b', {
     paginationTotalHits: 200 // default: 200.
 
   })
 });
 var hitTemplate = '<div class="hit media">' + '<div class="media-left">' + // '<div class="media-object" style="background-image: url(\'{{image}}\');"></div>' +
-'</div>' + '<div class="media-body">' + '<h4 class="media-heading"> <a href="{{#helpers.highlight}}{"attribute": "link"}{{/helpers.highlight}}">{{#helpers.highlight}} { "attribute": "name" }{{/helpers.highlight}} </a></h4>' + '<h3 class="media-heading">Class: {{#helpers.highlight}}{ "attribute": "classes" }{{/helpers.highlight}} </h3>' + '<p class="year">Description: {{description}}</p>' + '</div>' + '</div>';
+'</div>' + '<div class="media-body">' + '<h4 class="media-heading">Dataset: <a href="{{#helpers.highlight}}{"attribute": "link"}{{/helpers.highlight}}" target="_blank">{{#helpers.highlight}} { "attribute": "name" }{{/helpers.highlight}} </a></h4>' + '<h3 class="media-heading">Class: <span class="year">{{#helpers.highlight}}{ "attribute": "classes" }{{/helpers.highlight}} </span></h3>' + '<p class="year">Description: {{description}}</p>' + '</div>' + '</div>';
 var noResultsTemplate = '<div class="text-center">No results found matching <strong>{{query}}</strong>.</div>';
 search.addWidgets([instantsearch.widgets.searchBox({
   container: '#searchbox',
@@ -3306,7 +3306,7 @@ search.addWidgets([instantsearch.widgets.searchBox({
   attribute: 'name',
   operator: 'or',
   showMore: true,
-  showMoreLimit: 40,
+  showMoreLimit: 15,
   cssClasses: {
     list: 'nav nav-list',
     count: 'badge pull-right',
@@ -3343,7 +3343,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59241" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56849" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
